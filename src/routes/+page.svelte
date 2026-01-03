@@ -9,27 +9,35 @@
   let calculatorResult = null;
 
   function calculateMigration() {
-    // Realistic cost basis
-    const piAnnualLicense = 350000; // Typical PI System license
-    const yearlyIncrease = 0.08; // 8% annual increase (standard for enterprise software)
+    // System age drives legacy licensing cost escalation
+    // Older systems = more accumulated licensing fees + higher base costs
+    const baseAnnualLicense = 250000; // Starting PI license
+    const ageMultiplier = 1 + (calculatorState.systemAge * 0.05); // 5% cost increase per year of system age
+    const piAnnualLicense = baseAnnualLicense * ageMultiplier;
+    const yearlyIncrease = 0.08; // 8% annual increase (standard enterprise software)
     const projectionYears = 5;
     
-    // Calculate cumulative PI cost over 5 years
+    // Calculate cumulative PI cost over 5 years with escalation
     let piTotalCost = 0;
     for (let i = 0; i < projectionYears; i++) {
       piTotalCost += piAnnualLicense * Math.pow(1 + yearlyIncrease, i);
     }
     
     // nai'a pricing: $2 per point per year, capped at $150k/year
+    // System age = more historical data, but nai'a handles it non-destructively
+    // One-time migration complexity factor (paid upfront)
     const naiaPricePerPoint = 2;
     const naiaCap = 150000;
     const naiaNumeratorAnnual = Math.min(calculatorState.pointCount * naiaPricePerPoint, naiaCap);
     const naiaTotalCost = naiaNumeratorAnnual * projectionYears;
     
     const costSaved = piTotalCost - naiaTotalCost;
-    const roi = ((costSaved) / naiaTotalCost * 100).toFixed(0);
+    const roi = naiaTotalCost > 0 ? ((costSaved) / naiaTotalCost * 100).toFixed(0) : 0;
 
     calculatorResult = {
+      systemAge: calculatorState.systemAge,
+      pointCount: calculatorState.pointCount,
+      piAnnualLicense: piAnnualLicense.toFixed(0),
       piTotalCost: piTotalCost.toFixed(0),
       naiaTotalCost: naiaTotalCost.toFixed(0),
       costSaved: costSaved.toFixed(0),
@@ -136,17 +144,19 @@
             <div class="bg-slate-900/50 rounded-xl p-6 border border-red-500/30">
               <p class="text-slate-400 text-sm mb-2">PI System Total Cost (5 years)</p>
               <p class="text-3xl font-bold text-red-400">${parseInt(calculatorResult.piTotalCost).toLocaleString()}</p>
-              <p class="text-slate-500 text-xs mt-2">With 8% annual license increase</p>
+              <p class="text-slate-500 text-xs mt-2">Annual license: ${parseInt(calculatorResult.piAnnualLicense).toLocaleString()} + 8% escalation</p>
+              <p class="text-slate-600 text-xs mt-1">{calculatorResult.systemAge}yr system = {((calculatorResult.systemAge * 5)).toFixed(0)}% cost premium</p>
             </div>
 
             <div class="bg-slate-900/50 rounded-xl p-6 border border-cyan-500/30">
               <p class="text-slate-400 text-sm mb-2">nai'a Total Cost (5 years)</p>
               <p class="text-3xl font-bold text-cyan-400">${parseInt(calculatorResult.naiaTotalCost).toLocaleString()}</p>
-              <p class="text-slate-500 text-xs mt-2">@$2/point/year, capped</p>
+              <p class="text-slate-500 text-xs mt-2">@$2/point/year × {calculatorResult.pointCount.toLocaleString()} points</p>
+              <p class="text-slate-600 text-xs mt-1">Linear pricing—age doesn't increase cost</p>
             </div>
 
             <div class="bg-gradient-to-br from-green-900/40 to-emerald-900/40 rounded-xl p-6 border border-emerald-500/50">
-              <p class="text-slate-300 text-sm mb-3">Your Savings</p>
+              <p class="text-slate-300 text-sm mb-3">Your 5-Year Savings</p>
               <div class="grid grid-cols-2 gap-4">
                 <div>
                   <p class="text-emerald-400 text-2xl font-bold">${parseInt(calculatorResult.costSaved).toLocaleString()}</p>
