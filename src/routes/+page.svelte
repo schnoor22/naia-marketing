@@ -61,6 +61,7 @@
   <!-- Hero -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
     <div class="space-y-8">
+      <img src="/logo.png" alt="naía" class="w-20 h-20 object-contain rounded-lg mx-auto" />
       <h1 class="text-6xl md:text-7xl font-black tracking-tight">
         <span class="bg-gradient-to-r from-cyan-300 via-blue-300 to-cyan-300 bg-clip-text text-transparent">Transform</span>
         <br />
@@ -71,9 +72,9 @@
       <p class="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
         Enterprise AI that learns your asset patterns and connects disparate data sources. Non-destructive, intelligent, immediate.
       </p>
-      <button class="inline-block bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-blue-500/50 text-lg">
-        Start Migration Calculator
-      </button>
+      <a href="#calculator" class="inline-block bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-blue-500/50 text-lg cursor-pointer">
+        See Your ROI
+      </a>
     </div>
 
     <div class="absolute inset-0 overflow-hidden -z-10">
