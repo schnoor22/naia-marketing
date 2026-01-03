@@ -3,6 +3,7 @@
 
   let calculatorState = {
     pointCount: 10000,
+    systemAge: 10,
   };
 
   let calculatorResult = null;
@@ -94,15 +95,32 @@
             <input 
               type="range" 
               min="1000" 
-              max="100000" 
-              step="1000"
+              max="10000000" 
+              step="10000"
               bind:value={calculatorState.pointCount}
               on:input={handleSliderChange}
               class="w-full accent-cyan-500"
             />
             <div class="flex justify-between text-xs text-slate-400 mt-2">
               <span>1K tags</span>
-              <span>100K tags</span>
+              <span>10M tags</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-semibold text-blue-300 mb-3">System Age: {calculatorState.systemAge} years</label>
+            <input 
+              type="range" 
+              min="1" 
+              max="50" 
+              step="1"
+              bind:value={calculatorState.systemAge}
+              on:input={handleSliderChange}
+              class="w-full accent-blue-500"
+            />
+            <div class="flex justify-between text-xs text-slate-400 mt-2">
+              <span>1 year old</span>
+              <span>50+ years</span>
             </div>
           </div>
           
@@ -146,7 +164,90 @@
     </div>
   </section>
 
-  <!-- How It Works -->
+  <!-- Competitive Comparison -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <h2 class="text-4xl font-bold mb-4 text-center">How nai'a Compares</h2>
+    <p class="text-slate-300 text-center mb-12 max-w-2xl mx-auto">Enterprise-grade capabilities at startup pricing. Built for industrial data, not generic time-series.</p>
+    
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="border-b border-slate-700">
+            <th class="text-left py-4 px-4 text-slate-300 font-semibold">Feature</th>
+            <th class="text-center py-4 px-4"><div class="flex items-center justify-center gap-2"><span class="text-cyan-400 font-bold">nai'a</span></div></th>
+            <th class="text-center py-4 px-4 text-slate-400">PI System</th>
+            <th class="text-center py-4 px-4 text-slate-400">InfluxDB</th>
+            <th class="text-center py-4 px-4 text-slate-400">Grafana</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-slate-800 hover:bg-slate-900/30 transition">
+            <td class="py-4 px-4 text-slate-300">Non-destructive data ingestion</td>
+            <td class="text-center py-4 px-4"><span class="text-emerald-400 font-bold">✓</span></td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+          </tr>
+          <tr class="border-b border-slate-800 hover:bg-slate-900/30 transition">
+            <td class="py-4 px-4 text-slate-300">AI pattern learning (hierarchical)</td>
+            <td class="text-center py-4 px-4"><span class="text-emerald-400 font-bold">✓</span></td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+          </tr>
+          <tr class="border-b border-slate-800 hover:bg-slate-900/30 transition">
+            <td class="py-4 px-4 text-slate-300">Auto-semantic asset model</td>
+            <td class="text-center py-4 px-4"><span class="text-emerald-400 font-bold">✓</span></td>
+            <td class="text-center py-4 px-4 text-slate-400">Partial</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+          </tr>
+          <tr class="border-b border-slate-800 hover:bg-slate-900/30 transition">
+            <td class="py-4 px-4 text-slate-300">OPC-UA native support</td>
+            <td class="text-center py-4 px-4"><span class="text-emerald-400 font-bold">✓</span></td>
+            <td class="text-center py-4 px-4 text-slate-400">Plugin</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+          </tr>
+          <tr class="border-b border-slate-800 hover:bg-slate-900/30 transition">
+            <td class="py-4 px-4 text-slate-300">Handles 10+ years of legacy data</td>
+            <td class="text-center py-4 px-4"><span class="text-emerald-400 font-bold">✓</span></td>
+            <td class="text-center py-4 px-4"><span class="text-emerald-400 font-bold">✓</span></td>
+            <td class="text-center py-4 px-4 text-slate-400">Partial</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+          </tr>
+          <tr class="border-b border-slate-800 hover:bg-slate-900/30 transition">
+            <td class="py-4 px-4 text-slate-300">Scales to millions of points</td>
+            <td class="text-center py-4 px-4"><span class="text-emerald-400 font-bold">✓</span></td>
+            <td class="text-center py-4 px-4"><span class="text-emerald-400 font-bold">✓</span></td>
+            <td class="text-center py-4 px-4"><span class="text-emerald-400 font-bold">✓</span></td>
+            <td class="text-center py-4 px-4 text-slate-400">Partial</td>
+          </tr>
+          <tr class="border-b border-slate-800 hover:bg-slate-900/30 transition">
+            <td class="py-4 px-4 text-slate-300">Predictive analytics</td>
+            <td class="text-center py-4 px-4"><span class="text-emerald-400 font-bold">✓</span></td>
+            <td class="text-center py-4 px-4 text-slate-400">Partial</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+          </tr>
+          <tr class="border-b border-slate-800 hover:bg-slate-900/30 transition">
+            <td class="py-4 px-4 text-slate-300">Costs scale linearly (no surprises)</td>
+            <td class="text-center py-4 px-4"><span class="text-emerald-400 font-bold">✓</span></td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+            <td class="text-center py-4 px-4 text-slate-500">✗</td>
+          </tr>
+          <tr class="hover:bg-slate-900/30 transition">
+            <td class="py-4 px-4 text-slate-300 font-semibold">Typical annual cost (50K points)</td>
+            <td class="text-center py-4 px-4"><span class="text-emerald-400 font-bold">$100K</span></td>
+            <td class="text-center py-4 px-4 text-slate-400">$350K+</td>
+            <td class="text-center py-4 px-4 text-slate-400">$200K+</td>
+            <td class="text-center py-4 px-4 text-slate-400">$150K+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <h2 class="text-4xl font-bold mb-16 text-center">How nai'a Works</h2>
     
