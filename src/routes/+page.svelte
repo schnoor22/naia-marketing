@@ -94,7 +94,7 @@
   <section id="calculator" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <div class="bg-gradient-to-br from-blue-900/30 to-cyan-900/20 rounded-2xl border border-blue-700/50 p-12 backdrop-blur-xl">
       <h2 class="text-4xl font-bold mb-4 text-center">Migration ROI Calculator</h2>
-      <p class="text-slate-300 text-center mb-12 max-w-2xl mx-auto">See how nai'a transforms months of manual work into days of automated intelligence</p>
+      <p class="text-slate-300 text-center mb-12 max-w-2xl mx-auto">See how <span class="text-cyan-400">nai'a</span> transforms months of manual work into days of automated intelligence</p>
 
       <div class="grid md:grid-cols-2 gap-12">
         <div class="space-y-8">
@@ -134,7 +134,7 @@
           
           <div class="bg-slate-900/30 rounded-lg p-4 border border-slate-700/50">
             <p class="text-slate-300 text-sm">
-              Compare your data point licensing costs over 5 years. nai'a charges a flat $2 per point annually (capped at $150k/year), while legacy systems typically escalate at 8% yearly.
+              Compare your data point licensing costs over 5 years. <span class="text-cyan-400">nai'a</span> charges a flat $2 per point annually (capped at $150k/year), while legacy systems typically escalate at 8% yearly.
             </p>
           </div>
         </div>
@@ -149,7 +149,7 @@
             </div>
 
             <div class="bg-slate-900/50 rounded-xl p-6 border border-cyan-500/30">
-              <p class="text-slate-400 text-sm mb-2">nai'a Total Cost (5 years)</p>
+              <p class="text-slate-400 text-sm mb-2"><span class="text-cyan-400">nai'a</span> Total Cost (5 years)</p>
               <p class="text-3xl font-bold text-cyan-400">${parseInt(calculatorResult.naiaTotalCost).toLocaleString()}</p>
               <p class="text-slate-500 text-xs mt-2">@$2/point/year × {calculatorResult.pointCount.toLocaleString()} points</p>
               <p class="text-slate-600 text-xs mt-1">Linear pricing—age doesn't increase cost</p>
@@ -176,7 +176,7 @@
 
   <!-- Competitive Comparison -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-    <h2 class="text-4xl font-bold mb-4 text-center">How nai'a Compares</h2>
+    <h2 class="text-4xl font-bold mb-4 text-center">How <span class="text-cyan-400">nai'a</span> Compares</h2>
     <p class="text-slate-300 text-center mb-12 max-w-2xl mx-auto">Enterprise-grade capabilities at startup pricing. Built for industrial data, not generic time-series.</p>
     
     <div class="overflow-x-auto">
@@ -259,7 +259,7 @@
     </div>
   </section>
   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-    <h2 class="text-4xl font-bold mb-16 text-center">How nai'a Works</h2>
+    <h2 class="text-4xl font-bold mb-16 text-center">How <span class="text-cyan-400">nai'a</span> Works</h2>
     
     <div class="grid md:grid-cols-3 gap-8">
       <div class="relative group">
@@ -268,7 +268,7 @@
           <div class="text-4xl font-bold text-cyan-400 mb-4">1</div>
           <h3 class="text-xl font-bold mb-4">Connect Sources</h3>
           <p class="text-slate-300 text-sm leading-relaxed">
-            Point nai'a to your historians, databases, and real-time streams. Non-destructive connection with zero system impact.
+            Point <span class="text-cyan-400">nai'a</span> to your historians, databases, and real-time streams. Non-destructive connection with zero system impact.
           </p>
         </div>
       </div>
@@ -300,9 +300,9 @@
   <!-- Philosophy -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
     <div class="bg-gradient-to-br from-blue-900/30 to-slate-900/50 border border-blue-700/30 rounded-2xl p-12 backdrop-blur-xl text-center">
-      <h3 class="text-2xl font-bold mb-6">The nai'a Philosophy</h3>
+      <h3 class="text-2xl font-bold mb-6">The <span class="text-cyan-400">nai'a</span> Philosophy</h3>
       <p class="text-lg text-slate-200 leading-relaxed mb-8">
-        Like the dolphin that communicates the knowledge of many fish, nai'a speaks for your silent data. Each data point is a signal waiting to be heard.
+        Like the dolphin that communicates the knowledge of many fish, <span class="text-cyan-400">nai'a</span> speaks for your silent data. Each data point is a signal waiting to be heard.
       </p>
       <p class="text-sm text-slate-400 italic">
         Non-destructive. Intelligent. Enterprise-grade AI for the industrial world.
@@ -330,3 +330,4 @@
 <style global>
   @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
 </style>
+
