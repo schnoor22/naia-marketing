@@ -48,9 +48,7 @@
   <nav class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/70 border-b border-blue-900/30">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-lg overflow-hidden bg-gradient-to-br from-blue-900 to-cyan-900 flex items-center justify-center">
-          <img src="/logo.png" alt="naía" class="w-full h-full object-cover mix-blend-mode: multiply brightness-110" />
-        </div>
+        <img src="/logo.png" alt="naía" class="w-12 h-12 object-contain rounded-lg" />
         <div>
           <div class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">nai'a</div>
           <div class="text-xs text-slate-400">Industrial AI</div>
@@ -266,10 +264,4 @@
 
 <style global>
   @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
-
-  /* Logo white background blending */
-  img[alt="naía"] {
-    mix-blend-mode: multiply;
-    filter: brightness(1.15) contrast(1.1);
-  }
 </style>
