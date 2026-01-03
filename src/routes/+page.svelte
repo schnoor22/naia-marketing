@@ -3,30 +3,34 @@
 
   let calculatorState = {
     pointCount: 10000,
-    systemCount: 5,
-    dataAgeYears: 12,
-    manualHoursPerPoint: 4,
   };
 
   let calculatorResult = null;
 
   function calculateMigration() {
-    const totalManualHours = calculatorState.pointCount * calculatorState.manualHoursPerPoint;
-    const manualWeeks = totalManualHours / 40;
-    const manualCost = totalManualHours * 125;
+    // Realistic cost basis
+    const piAnnualLicense = 350000; // Typical PI System license
+    const yearlyIncrease = 0.08; // 8% annual increase (standard for enterprise software)
+    const projectionYears = 5;
     
-    const naiaDays = (calculatorState.pointCount * 0.15) / 24;
-    const naiaCost = naiaDays * 2500;
+    // Calculate cumulative PI cost over 5 years
+    let piTotalCost = 0;
+    for (let i = 0; i < projectionYears; i++) {
+      piTotalCost += piAnnualLicense * Math.pow(1 + yearlyIncrease, i);
+    }
     
-    const timeSaved = manualWeeks - (naiaDays / 5);
-    const costSaved = manualCost - naiaCost;
-    const roi = ((costSaved) / naiaCost * 100).toFixed(0);
+    // nai'a pricing: $2 per point per year, capped at $150k/year
+    const naiaPricePerPoint = 2;
+    const naiaCap = 150000;
+    const naiaNumeratorAnnual = Math.min(calculatorState.pointCount * naiaPricePerPoint, naiaCap);
+    const naiaTotalCost = naiaNumeratorAnnual * projectionYears;
+    
+    const costSaved = piTotalCost - naiaTotalCost;
+    const roi = ((costSaved) / naiaTotalCost * 100).toFixed(0);
 
     calculatorResult = {
-      manualHours: totalManualHours,
-      manualCost: manualCost.toFixed(0),
-      naiaCost: naiaCost.toFixed(0),
-      timeSaved: timeSaved.toFixed(1),
+      piTotalCost: piTotalCost.toFixed(0),
+      naiaTotalCost: naiaTotalCost.toFixed(0),
       costSaved: costSaved.toFixed(0),
       roi
     };
@@ -103,82 +107,37 @@
               class="w-full accent-cyan-500"
             />
             <div class="flex justify-between text-xs text-slate-400 mt-2">
-              <span>1K</span>
-              <span>100K</span>
+              <span>1K tags</span>
+              <span>100K tags</span>
             </div>
           </div>
-
-          <div>
-            <label class="block text-sm font-semibold text-blue-300 mb-3">Legacy Systems: {calculatorState.systemCount}</label>
-            <input 
-              type="range" 
-              min="1" 
-              max="20" 
-              step="1"
-              bind:value={calculatorState.systemCount}
-              on:input={handleSliderChange}
-              class="w-full accent-blue-500"
-            />
-            <div class="flex justify-between text-xs text-slate-400 mt-2">
-              <span>1</span>
-              <span>20</span>
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-sm font-semibold text-cyan-300 mb-3">Data Age: {calculatorState.dataAgeYears} years</label>
-            <input 
-              type="range" 
-              min="1" 
-              max="30" 
-              step="1"
-              bind:value={calculatorState.dataAgeYears}
-              on:input={handleSliderChange}
-              class="w-full accent-cyan-500"
-            />
-            <div class="flex justify-between text-xs text-slate-400 mt-2">
-              <span>1</span>
-              <span>30</span>
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-sm font-semibold text-blue-300 mb-3">Manual Hours per Point: {calculatorState.manualHoursPerPoint}h</label>
-            <input 
-              type="range" 
-              min="1" 
-              max="16" 
-              step="0.5"
-              bind:value={calculatorState.manualHoursPerPoint}
-              on:input={handleSliderChange}
-              class="w-full accent-blue-500"
-            />
-            <div class="flex justify-between text-xs text-slate-400 mt-2">
-              <span>1h</span>
-              <span>16h</span>
-            </div>
+          
+          <div class="bg-slate-900/30 rounded-lg p-4 border border-slate-700/50">
+            <p class="text-slate-300 text-sm">
+              Compare your data point licensing costs over 5 years. nai'a charges a flat $2 per point annually (capped at $150k/year), while legacy systems typically escalate at 8% yearly.
+            </p>
           </div>
         </div>
 
         {#if calculatorResult}
           <div class="space-y-6">
             <div class="bg-slate-900/50 rounded-xl p-6 border border-red-500/30">
-              <p class="text-slate-400 text-sm mb-2">Traditional Manual Migration</p>
-              <p class="text-3xl font-bold text-red-400">${calculatorResult.manualCost}</p>
-              <p class="text-slate-500 text-xs mt-2">{calculatorResult.manualHours.toLocaleString()} engineer hours</p>
+              <p class="text-slate-400 text-sm mb-2">PI System Total Cost (5 years)</p>
+              <p class="text-3xl font-bold text-red-400">${parseInt(calculatorResult.piTotalCost).toLocaleString()}</p>
+              <p class="text-slate-500 text-xs mt-2">With 8% annual license increase</p>
             </div>
 
             <div class="bg-slate-900/50 rounded-xl p-6 border border-cyan-500/30">
-              <p class="text-slate-400 text-sm mb-2">nai'a Intelligent Migration</p>
-              <p class="text-3xl font-bold text-cyan-400">${calculatorResult.naiaCost}</p>
-              <p class="text-slate-500 text-xs mt-2">{calculatorResult.timeSaved} weeks to deploy</p>
+              <p class="text-slate-400 text-sm mb-2">nai'a Total Cost (5 years)</p>
+              <p class="text-3xl font-bold text-cyan-400">${parseInt(calculatorResult.naiaTotalCost).toLocaleString()}</p>
+              <p class="text-slate-500 text-xs mt-2">@$2/point/year, capped</p>
             </div>
 
             <div class="bg-gradient-to-br from-green-900/40 to-emerald-900/40 rounded-xl p-6 border border-emerald-500/50">
               <p class="text-slate-300 text-sm mb-3">Your Savings</p>
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <p class="text-emerald-400 text-2xl font-bold">${calculatorResult.costSaved}</p>
+                  <p class="text-emerald-400 text-2xl font-bold">${parseInt(calculatorResult.costSaved).toLocaleString()}</p>
                   <p class="text-xs text-slate-400">Total savings</p>
                 </div>
                 <div>
