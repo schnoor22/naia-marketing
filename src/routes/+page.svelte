@@ -51,13 +51,7 @@
   <!-- Navigation -->
   <nav class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/70 border-b border-blue-900/30">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <img src="/logo.png" alt="naía" class="w-12 h-12 object-contain rounded-lg" />
-        <div>
-          <div class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">nai'a</div>
-          <div class="text-xs text-slate-400">Industrial AI</div>
-        </div>
-      </div>
+      <div></div>
       <div class="text-sm text-slate-300 max-w-xs text-right">Unlock 10+ years of legacy data in days, not months</div>
     </div>
   </nav>
@@ -65,7 +59,7 @@
   <!-- Hero -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
     <div class="space-y-8">
-      <img src="/logo.png" alt="naía" class="w-20 h-20 object-contain rounded-lg mx-auto" />
+      <img src="/logo.png" alt="naía" class="w-40 h-40 object-contain rounded-lg mx-auto" />
       <h1 class="text-6xl md:text-7xl font-black tracking-tight">
         <span class="bg-gradient-to-r from-cyan-300 via-blue-300 to-cyan-300 bg-clip-text text-transparent">Transform</span>
         <br />
