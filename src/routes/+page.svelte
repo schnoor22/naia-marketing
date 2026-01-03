@@ -18,7 +18,7 @@
 	<nav class="sticky top-0 z-50 backdrop-blur-md bg-slate-900/80 border-b border-slate-700">
 		<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
 			<div class="flex items-center gap-2">
-				<div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center font-bold">N</div>
+				<img src="/logo.png" alt="NAIA" class="w-10 h-10 object-contain" />
 				<span class="text-xl font-bold">NAIA</span>
 			</div>
 			<div class="text-sm text-slate-400">Industrial Data Intelligence</div>
@@ -141,3 +141,4 @@
 		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	}
 </style>
+
